@@ -14,16 +14,16 @@
         </script>
     </jsp:attribute>
     <jsp:body>
-        <h2><c:if test="${visit['new']}">New </c:if>Visit</h2>
+        <h2><c:if test="${visit['new']}">Nova </c:if>Consulta</h2>
 
         <span id="pet"><strong>Pet</strong></span>
         <table class="table table-striped" aria-describedby="pet">
             <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Birth Date</th>
-                <th scope="col">Type</th>
-                <th scope="col">Owner</th>
+                <th scope="col">Nome do pet</th>
+                <th scope="col">Nascimento</th>
+                <th scope="col">Tipo de animal</th>
+                <th scope="col">Dono</th>
             </tr>
             </thead>
             <tr>
@@ -36,24 +36,24 @@
 
         <form:form modelAttribute="visit" class="form-horizontal">
             <div class="form-group has-feedback">
-                <petclinic:inputField label="Date" name="date"/>
-                <petclinic:inputField label="Description" name="description"/>
+                <petclinic:inputField label="Data da consulta" name="date"/>
+                <petclinic:inputField label="Descrição do motivo da consulta" name="description"/>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <input type="hidden" name="petId" value="${visit.pet.id}"/>
-                    <button class="btn btn-default" type="submit">Add Visit</button>
+                    <button class="btn btn-default" type="submit">Adicionar Consulta</button>
                 </div>
             </div>
         </form:form>
 
         <br/>
-        <strong id="previousVisits">Previous Visits</strong>
+        <strong id="previousVisits">Consultas Anteriores</strong>
         <table class="table table-striped" aria-describedby="previousVisits">
             <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Description</th>
+                <th scope="col">Data da consulta</th>
+                <th scope="col">Descrição</th>
             </tr>
             <c:forEach var="visit" items="${visit.pet.visits}">
                 <c:if test="${!visit['new']}">

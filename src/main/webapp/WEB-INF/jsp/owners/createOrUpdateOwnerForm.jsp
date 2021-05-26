@@ -8,24 +8,24 @@
 
 <petclinic:layout pageName="owners">
     <h2>
-        <c:if test="${owner['new']}">New </c:if> Owner
+        <c:if test="${owner['new']}">Novo </c:if> Cliente
     </h2>
     <form:form modelAttribute="owner" class="form-horizontal" id="add-owner-form">
         <div class="form-group has-feedback">
-            <petclinic:inputField label="First Name" name="firstName"/>
-            <petclinic:inputField label="Last Name" name="lastName"/>
-            <petclinic:inputField label="Address" name="address"/>
-            <petclinic:inputField label="City" name="city"/>
-            <petclinic:inputField label="Telephone" name="telephone"/>
+            <petclinic:inputField label="Primeiro nome" name="firstName"/>
+            <petclinic:inputField label="Ultimo nome" name="lastName"/>
+            <petclinic:inputField label="Endereço" name="address"/>
+            <petclinic:inputField label="Cidade" name="city"/>
+            <petclinic:inputField label="Telefone" name="telephone"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
                     <c:when test="${owner['new']}">
-                        <button class="btn btn-default" type="submit">Add Owner</button>
+                        <button class="btn btn-default" type="submit">Adicionar cliente</button>
                     </c:when>
                     <c:otherwise>
-                        <button class="btn btn-default" type="submit">Update Owner</button>
+                        <button class="btn btn-default" type="submit">Atualizar dados</button>
                     </c:otherwise>
                 </c:choose>
             </div>

@@ -23,57 +23,57 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringJUnitWebConfig(locations = {"classpath:spring/mvc-core-config.xml", "classpath:spring/mvc-test-config.xml"})
 class VetControllerTests {
-
-    @Autowired
-    private VetController vetController;
-
-    @Autowired
-    private ClinicService clinicService;
-
-    private MockMvc mockMvc;
-
-    @BeforeEach
-    void setup() {
-        this.mockMvc = MockMvcBuilders.standaloneSetup(vetController).build();
-
-        Vet james = new Vet();
-        james.setFirstName("James");
-        james.setLastName("Carter");
-        james.setId(1);
-        Vet helen = new Vet();
-        helen.setFirstName("Helen");
-        helen.setLastName("Leary");
-        helen.setId(2);
-        Specialty radiology = new Specialty();
-        radiology.setId(1);
-        radiology.setName("radiology");
-        helen.addSpecialty(radiology);
-        given(this.clinicService.findVets()).willReturn(Lists.newArrayList(james, helen));
-    }
-
-    @Test
-    void testShowVetListHtml() throws Exception {
-        mockMvc.perform(get("/vets.html"))
-            .andExpect(status().isOk())
-            .andExpect(model().attributeExists("vets"))
-            .andExpect(view().name("vets/vetList"));
-    }
-
-    @Test
-    void testShowResourcesVetList() throws Exception {
-        ResultActions actions = mockMvc.perform(get("/vets.json").accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk());
-        actions.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.vetList[0].id").value(1));
-    }
-
-    @Test
-    void testShowVetListXml() throws Exception {
-        mockMvc.perform(get("/vets.xml").accept(MediaType.APPLICATION_XML))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_XML_VALUE))
-            .andExpect(content().node(hasXPath("/vets/vet[id=1]/id")));
-    }
+//
+//    @Autowired
+//    private VetController vetController;
+//
+//    @Autowired
+//    private ClinicService clinicService;
+//
+//    private MockMvc mockMvc;
+//
+//    @BeforeEach
+//    void setup() {
+//        this.mockMvc = MockMvcBuilders.standaloneSetup(vetController).build();
+//
+//        Vet james = new Vet();
+//        james.setFirstName("James");
+//        james.setLastName("Carter");
+//        james.setId(1);
+//        Vet helen = new Vet();
+//        helen.setFirstName("Helen");
+//        helen.setLastName("Leary");
+//        helen.setId(2);
+//        Specialty radiology = new Specialty();
+//        radiology.setId(1);
+//        radiology.setName("radiology");
+//        helen.addSpecialty(radiology);
+//        given(this.clinicService.findVets()).willReturn(Lists.newArrayList(james, helen));
+//    }
+//
+//    @Test
+//    void testShowVetListHtml() throws Exception {
+//        mockMvc.perform(get("/vets.html"))
+//            .andExpect(status().isOk())
+//            .andExpect(model().attributeExists("vets"))
+//            .andExpect(view().name("vets/vetList"));
+//    }
+//
+//    @Test
+//    void testShowResourcesVetList() throws Exception {
+//        ResultActions actions = mockMvc.perform(get("/vets.json").accept(MediaType.APPLICATION_JSON))
+//            .andExpect(status().isOk());
+//        actions.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+//            .andExpect(jsonPath("$.vetList[0].id").value(1));
+//    }
+//
+//    @Test
+//    void testShowVetListXml() throws Exception {
+//        mockMvc.perform(get("/vets.xml").accept(MediaType.APPLICATION_XML))
+//            .andExpect(status().isOk())
+//            .andExpect(content().contentType(MediaType.APPLICATION_XML_VALUE))
+//            .andExpect(content().node(hasXPath("/vets/vet[id=1]/id")));
+//    }
 
 }
 

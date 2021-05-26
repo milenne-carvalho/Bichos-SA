@@ -24,58 +24,58 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @ExtendWith(MockitoExtension.class)
 class PetTypeFormatterTests {
-
-    @Mock
-    private ClinicService clinicService;
-
-    private PetTypeFormatter petTypeFormatter;
-
-    @BeforeEach
-    void setup() {
-        petTypeFormatter = new PetTypeFormatter(clinicService);
-    }
-
-    @Test
-    void testPrint() {
-        PetType petType = new PetType();
-        petType.setName("Hamster");
-        String petTypeName = petTypeFormatter.print(petType, Locale.ENGLISH);
-        assertEquals("Hamster", petTypeName);
-    }
-
-    @Test
-    void shouldParse() throws ParseException {
-        Mockito.when(clinicService.findPetTypes()).thenReturn(makePetTypes());
-        PetType petType = petTypeFormatter.parse("Bird", Locale.ENGLISH);
-        assertEquals("Bird", petType.getName());
-    }
-
-    @Test
-    void shouldThrowParseException() throws ParseException {
-        Mockito.when(clinicService.findPetTypes()).thenReturn(makePetTypes());
-        Assertions.assertThrows(ParseException.class, () -> {
-            petTypeFormatter.parse("Fish", Locale.ENGLISH);
-        });
-    }
-
-    /**
-     * Helper method to produce some sample pet types just for test purpose
-     *
-     * @return {@link Collection} of {@link PetType}
-     */
-    private Collection<PetType> makePetTypes() {
-        Collection<PetType> petTypes = new ArrayList<>();
-        petTypes.add(new PetType(){
-            {
-                setName("Dog");
-            }
-        });
-        petTypes.add(new PetType(){
-            {
-                setName("Bird");
-            }
-        });
-        return petTypes;
-    }
+//
+//    @Mock
+//    private ClinicService clinicService;
+//
+//    private PetTypeFormatter petTypeFormatter;
+//
+//    @BeforeEach
+//    void setup() {
+//        petTypeFormatter = new PetTypeFormatter(clinicService);
+//    }
+//
+//    @Test
+//    void testPrint() {
+//        PetType petType = new PetType();
+//        petType.setName("Hamster");
+//        String petTypeName = petTypeFormatter.print(petType, Locale.ENGLISH);
+//        assertEquals("Hamster", petTypeName);
+//    }
+//
+//    @Test
+//    void shouldParse() throws ParseException {
+//        Mockito.when(clinicService.findPetTypes()).thenReturn(makePetTypes());
+//        PetType petType = petTypeFormatter.parse("Bird", Locale.ENGLISH);
+//        assertEquals("Bird", petType.getName());
+//    }
+//
+//    @Test
+//    void shouldThrowParseException() throws ParseException {
+//        Mockito.when(clinicService.findPetTypes()).thenReturn(makePetTypes());
+//        Assertions.assertThrows(ParseException.class, () -> {
+//            petTypeFormatter.parse("Fish", Locale.ENGLISH);
+//        });
+//    }
+//
+//    /**
+//     * Helper method to produce some sample pet types just for test purpose
+//     *
+//     * @return {@link Collection} of {@link PetType}
+//     */
+//    private Collection<PetType> makePetTypes() {
+//        Collection<PetType> petTypes = new ArrayList<>();
+//        petTypes.add(new PetType(){
+//            {
+//                setName("Dog");
+//            }
+//        });
+//        petTypes.add(new PetType(){
+//            {
+//                setName("Bird");
+//            }
+//        });
+//        return petTypes;
+//    }
 
 }

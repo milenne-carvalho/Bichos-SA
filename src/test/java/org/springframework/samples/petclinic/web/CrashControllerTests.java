@@ -18,29 +18,29 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringJUnitWebConfig(locations = {"classpath:spring/mvc-core-config.xml", "classpath:spring/mvc-test-config.xml"})
 class CrashControllerTests {
-
-    @Autowired
-    private CrashController crashController;
-
-    @Autowired
-    private SimpleMappingExceptionResolver simpleMappingExceptionResolver;
-
-    private MockMvc mockMvc;
-
-    @BeforeEach
-    void setup() {
-        this.mockMvc = MockMvcBuilders
-            .standaloneSetup(crashController)
-            .setHandlerExceptionResolvers(simpleMappingExceptionResolver)
-            .build();
-    }
-
-    @Test
-    void testTriggerException() throws Exception {
-        mockMvc.perform(get("/oups"))
-            .andExpect(view().name("exception"))
-            .andExpect(model().attributeExists("exception"))
-            .andExpect(forwardedUrl("exception"))
-            .andExpect(status().isOk());
-    }
+//
+//    @Autowired
+//    private CrashController crashController;
+//
+//    @Autowired
+//    private SimpleMappingExceptionResolver simpleMappingExceptionResolver;
+//
+//    private MockMvc mockMvc;
+//
+//    @BeforeEach
+//    void setup() {
+//        this.mockMvc = MockMvcBuilders
+//            .standaloneSetup(crashController)
+//            .setHandlerExceptionResolvers(simpleMappingExceptionResolver)
+//            .build();
+//    }
+//
+//    @Test
+//    void testTriggerException() throws Exception {
+//        mockMvc.perform(get("/oups"))
+//            .andExpect(view().name("exception"))
+//            .andExpect(model().attributeExists("exception"))
+//            .andExpect(forwardedUrl("exception"))
+//            .andExpect(status().isOk());
+//    }
 }

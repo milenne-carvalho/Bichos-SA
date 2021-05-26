@@ -5,14 +5,14 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="vets">
-    <h2 id="veterinarians">Veterinarians</h2>
+    <h2 id="veterinarians">Veterinários</h2>
 
     <div class="row">
         <table id="vetsTable" class="table table-striped" aria-describedby="veterinarians">
             <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Specialties</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Especialidades</th>
             </tr>
             </thead>
             <tbody>
@@ -25,20 +25,11 @@
                         <c:forEach var="specialty" items="${vet.specialties}">
                             <c:out value="${specialty.name} "/>
                         </c:forEach>
-                        <c:if test="${vet.nrOfSpecialties == 0}">none</c:if>
+                        <c:if test="${vet.nrOfSpecialties == 0}">Não informado</c:if>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
-    </div>
-
-    <div class="row">
-        <div class="col-md-2">
-            <a href="<spring:url value="/vets.xml" htmlEscape="true" />">View as XML</a>
-        </div>
-        <div class="col-md-2">
-            <a href="<spring:url value="/vets.json" htmlEscape="true" />">View as JSON</a>
-        </div>
     </div>
 </petclinic:layout>
